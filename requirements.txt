@@ -7,7 +7,6 @@ cmdstanpy==0.9.5
 contourpy==1.1.0
 convertdate==2.4.0
 cycler==0.11.0
-Cython==3.0.0
 Django==4.1
 djangorestframework==3.14.0
 ephem==4.1.4
