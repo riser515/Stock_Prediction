@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="input-group mb-3">
+        <select id="tickerInput" class="form-control mr-2">
+        <option value="AAPL">AAPL</option>
+        <option value="AMZN">AMZN</option>
+        <option value="GOOGL">GOOGL</option>
+        <option value="MSFT">MSFT</option>
+        <option value="TSLA">TSLA</option>
+        <option value="NFLX">NFLX</option>
+        <option value="FB">FB</option>
+        <option value="NVDA">NVDA</option>
+        <option value="JPM">JPM</option>
+        <option value="V">V</option>
+        <option value="DIS">DIS</option>
+        <option value="BABA">BABA</option>
+    </select>
+    <div class="input-group-append">
+        <button class="btn btn-primary" onclick="fetchPrediction()">Get Prediction</button>
+    </div>
+</div>
+
+<div>
+    <canvas id="predictionChart"></canvas>
+</div>
+
+<script src="{% static 'js/predictions.js' %}"></script>
+{% endblock %}

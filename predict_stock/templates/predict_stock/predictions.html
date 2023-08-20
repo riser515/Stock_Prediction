@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3 class="text-center" style="color: rgb(50,205,50);">Predictions for {{ ticker_symbol }}</h3>
+
+<div class="chart-container">
+    <div id="predictionChart"></div>
+</div>
+
+{{ data.dates|json_script:"dates-data" }}
+{{ data.predictions|json_script:"predictions-data" }}
+
+<script>
+    console.log("Script started");
+
+    const datesData = JSON.parse(document.getElementById('dates-data').textContent);
+    const predictionsData = JSON.parse(document.getElementById('predictions-data').textContent);
+
+    const dataFromTemplate = {
+        dates: datesData,
+        predictions: predictionsData
+    };
+
+    console.log("Data from template:", dataFromTemplate);
+
+    displayChart(dataFromTemplate);
+
+    function displayChart(chartData) {
+        const trace = {
+            x: chartData.dates,
+            y: chartData.predictions,
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {
+                color: 'rgb(138,43,226)', 
+                width: 2
+            },
+            marker: {
+                size: 2,
+                color: 'rgb(50,205,50)', 
+                opacity: 0.8
+            },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(138,43,226, 0.1)'  
+        };
+
+        const layout = {
+            title: {
+                font: {
+                    family: 'Arial, sans-serif',
+                    size: 24,
+                    color: 'rgb(70,130,180)'
+                }
+            },
+            xaxis: {
+                title: 'Date',
+                gridcolor: 'lightgray',
+                zerolinecolor: 'gray',
+                autorange: true,
+            },
+            yaxis: {
+                title: 'Price',
+                gridcolor: 'lightgray',
+                zerolinecolor: 'gray',
+            },
+            paper_bgcolor: 'rgba(245,245,245,1)',
+            plot_bgcolor: 'white',
+            hovermode: 'closest'
+        };
+
+        const config = {
+            responsive: true
+        };
+
+        Plotly.newPlot('predictionChart', [trace], layout, config);
+    }
+</script>
+{% endblock %}
