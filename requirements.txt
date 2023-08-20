@@ -7,7 +7,6 @@ cmdstanpy==0.9.5
 contourpy==1.1.0
 convertdate==2.4.0
 cycler==0.11.0
-Cython==3.0.0
 Django==4.1
 djangorestframework==3.14.0
 ephem==4.1.4
@@ -24,12 +23,12 @@ LunarCalendar==0.0.9
 lxml==4.9.3
 matplotlib==3.7.2
 multitasking==0.0.11
+numpy==1.25.2
 packaging==23.1
 pandas==2.0.3
 Pillow==10.0.0
 PyMeeus==0.5.12
 pyparsing==3.0.9
-pystan==2.19.1.1
 python-dateutil==2.8.2
 pytz==2023.3
 requests==2.31.0
